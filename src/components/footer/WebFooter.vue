@@ -99,17 +99,17 @@
 .footer-flex {
   display: flex;
   justify-content: space-between;
-  flex-wrap: wrap; /* Allows wrapping on smaller screens */
+  flex-wrap: wrap;
 }
 
 .footer-col {
-  flex: 1; /* Each column takes equal space */
-  min-width: 200px; /* Minimum width for responsiveness */
-  margin-right: 20px; /* Space between columns */
+  flex: 1;
+  min-width: 200px;
+  margin-right: 20px;
 }
 
 .footer-col:last-child {
-  margin-right: 0; /* Remove margin from the last column */
+  margin-right: 0;
 }
 
 .copyright {
@@ -131,10 +131,6 @@
 
 .btn-social img {
   margin: 0;
-}
-
-.btn-social:hover {
-  background-color: rgba($color: $primary, $alpha: 0.3) !important;
 }
 
 .contact-icon {
@@ -174,5 +170,8 @@ footer ul li {
 
 .location li {
   align-items: flex-start;
+}
+
+@media (max-width: 768px) {
 }
 </style>

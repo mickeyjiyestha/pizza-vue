@@ -136,9 +136,9 @@
 </template>
 
 <script>
-import pizzaData from "@/assets/json/pizza-list.json"; // Adjust the path as necessary
-import sizeData from "@/assets/json/size-list.json"; // Import size data
-import toppingData from "@/assets/json/topping-list.json"; // Import topping data
+import pizzaData from "@/assets/json/pizza-list.json";
+import sizeData from "@/assets/json/size-list.json";
+import toppingData from "@/assets/json/topping-list.json";
 
 export default {
   name: "HomePage",
@@ -251,7 +251,7 @@ export default {
   border-radius: 8px;
   padding: 10px;
   align-items: center;
-  margin: 10px; /* Adjust margin for spacing */
+  margin-right: 20px; /* Adjust margin for spacing */
   height: 150px; /* Atur tinggi untuk membuatnya persegi panjang */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   position: relative; /* Untuk menempatkan ribbon */
@@ -423,5 +423,41 @@ export default {
 
 .modal-footer button:hover {
   background-color: darkorange;
+}
+
+@media (max-width: 768px) {
+  .pizza-card {
+    width: 100%; /* Mengatur lebar kartu menjadi 100% agar dapat diisi secara horizontal */
+    margin-bottom: 20px;
+  }
+
+  .discount-logo {
+    width: 30px; /* Atur lebar logo sesuai kebutuhan */
+    margin-left: 50px;
+  }
+
+  .payment-summary {
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  .custom-pizza {
+    display: block;
+  }
+
+  .size-options {
+    display: inline-block;
+    margin-right: 20px;
+  }
+
+  .toppings-selection {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+
+  .topping-checkbox {
+    width: calc(33.33% - 10px); /* Three items per row with gap */
+  }
 }
 </style>

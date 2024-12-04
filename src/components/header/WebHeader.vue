@@ -1,7 +1,7 @@
 <template>
   <header class="header">
     <nav class="navbar navbar-expand-lg navbar-dark">
-      <div class="container-fluid">
+      <div class="container-fluid me-5">
         <div class="navbar-brand">
           <img src="@/assets/img/logo.svg" alt="" style="padding-left: 25px" />
         </div>
@@ -20,17 +20,17 @@
           :class="{ show: isMenuActive }"
           id="navbarNav"
         >
-          <div class="navbar-nav p-4 mx-auto">
+          <div class="navbar-nav mx-auto">
             <a class="nav-link" href="#">Home</a>
             <a class="nav-link" href="#">Order</a>
             <a class="nav-link" href="#">Blog</a>
             <a class="nav-link" href="#">About</a>
             <a class="nav-link" href="#">Contact us</a>
           </div>
-          <div class="navbar-nav ms-auto">
-            <a class="nav-link mx-auto" href="#">Login</a>
+          <div class="navbar-nav">
+            <a class="nav-link mx-auto mx-auto" href="#">Login</a>
             <a
-              class="btn btn-primary"
+              class="btn btn-primary me-1"
               style="background-color: orange; border: none"
               href="#"
               >Register</a
@@ -83,7 +83,7 @@ export default {
 .header-title {
   font-size: 80px;
   color: orange;
-  text-align: center; /* Center text for better responsiveness */
+  text-align: center;
 }
 
 .nav-link {
@@ -91,18 +91,28 @@ export default {
   font-size: 20px;
 }
 
+.nav-link:hover {
+  color: white;
+}
+
 @media (max-width: 768px) {
   .header-title {
-    font-size: 50px; /* Adjust font size for smaller screens */
+    font-size: 50px;
   }
 
   .navbar-nav {
-    margin-left: 0; /* Remove left margin on smaller screens */
-    justify-content: center; /* Center nav items */
+    margin: auto;
+    margin-top: 20px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .nav-link {
+    text-align: center;
   }
 
   .navbar-nav.ms-auto {
-    margin-top: 10px; /* Add margin for spacing */
+    margin-top: 10px;
   }
 }
 
