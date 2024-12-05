@@ -146,11 +146,11 @@ export default {
     return {
       pizzas: pizzaData.data,
       selectedPizza: null,
-      selectedSize: sizeData.data[0], // Default to the first size (Small)
+      selectedSize: sizeData.data[0],
       selectedToppings: [],
       availableToppings: toppingData.data,
-      filteredToppings: [], // Toppings available for the selected pizza
-      sizeData: sizeData.data, // Add size data to the component's data
+      filteredToppings: [],
+      sizeData: sizeData.data,
       showModal: false,
     };
   },
@@ -167,31 +167,30 @@ export default {
         0
       );
 
-      const sizePrice = this.selectedSize.extra_price; // Get the extra price for the selected size
+      const sizePrice = this.selectedSize.extra_price;
 
-      return pizzaPrice + toppingsPrice + sizePrice; // Include size price in total
+      return pizzaPrice + toppingsPrice + sizePrice;
     },
   },
   methods: {
     selectPizza(pizza) {
       this.selectedPizza = pizza;
-      this.selectedToppings = []; // Reset toppings when a new pizza is selected
-      this.filteredToppings = this.availableToppings.filter(
-        (topping) => pizza.toppings.includes(topping.id) // Only include toppings that are available for the selected pizza
+      this.selectedToppings = [];
+      this.filteredToppings = this.availableToppings.filter((topping) =>
+        pizza.toppings.includes(topping.id)
       );
     },
     toggleTopping(topping) {
       const index = this.selectedToppings.findIndex((t) => t.id === topping.id);
       if (index === -1) {
-        this.selectedToppings.push(topping); // Add topping if not already selected
+        this.selectedToppings.push(topping);
       } else {
-        this.selectedToppings.splice(index, 1); // Remove topping if already selected
+        this.selectedToppings.splice(index, 1);
       }
     },
 
     getStaticImageSrc(pizzaName) {
-      // Return the static path based on the pizza name
-      const formattedName = pizzaName.replace(/\s+/g, "-").toLowerCase(); // Format the pizza name
+      const formattedName = pizzaName.replace(/\s+/g, "-").toLowerCase();
       return `/src/assets/img/${formattedName}.png`;
     },
   },
@@ -204,29 +203,26 @@ export default {
 }
 
 .pizza-image {
-  width: 100px; /* Atur lebar gambar */
-  height: 100%; /* Gambar memenuhi tinggi kartu */
-  object-fit: cover; /* Mengisi area gambar tanpa merusak rasio aspek */
-  border-radius: 8px; /* Tambahkan border-radius pada gambar */
-  margin-right: 10px; /* Jarak antara gambar dan info */
-}
-
-.pizza-image:hover {
-  transform: rotate(15deg);
+  width: 100px;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-right: 10px;
+  transition: transform 0.3s ease;
 }
 
 .topping-checkbox.disabled {
-  color: gray; /* Change text color to gray */
-  pointer-events: none; /* Prevent interaction */
+  color: gray;
+  pointer-events: none;
 }
 
 .discount-logo {
-  width: 50px; /* Atur lebar logo sesuai kebutuhan */
-  height: auto; /* Menjaga rasio aspek */
-  position: absolute; /* Agar bisa ditempatkan di atas gambar */
-  top: -20px; /* Jarak dari atas */
-  left: 100px; /* Jarak dari kiri */
-  z-index: 1; /* Pastikan logo di atas gambar */
+  width: 50px;
+  height: auto;
+  position: absolute;
+  top: -15px;
+  left: 86px;
+  z-index: 1;
 }
 
 .title {
@@ -237,57 +233,64 @@ export default {
 
 .content {
   display: flex;
-  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  flex-wrap: wrap;
 }
 
 .pizza-selection {
   display: flex;
-  flex-wrap: wrap; /* Allow wrapping for smaller screens */
+  flex-wrap: wrap;
 }
 
 .pizza-card {
-  display: flex; /* Mengatur flexbox untuk membuat layout horizontal */
+  display: flex;
   background-color: #f8f8f8;
   border-radius: 8px;
+  width: 260px;
+  margin: auto;
   padding: 10px;
   align-items: center;
-  margin-right: 20px; /* Adjust margin for spacing */
-  height: 150px; /* Atur tinggi untuk membuatnya persegi panjang */
+  height: 150px;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  position: relative; /* Untuk menempatkan ribbon */
-  overflow: hidden; /* Sembunyikan elemen yang melampaui batas */
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
 }
 
 .pizza-card:hover {
   background-color: rgb(255, 225, 169);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .pizza-card.selected {
-  background-color: orange; /* Warna latar belakang untuk kartu yang dipilih */
-  color: white; /* Warna teks untuk kartu yang dipilih */
+  background-color: orange;
+  color: white;
+}
+
+.pizza-card:hover .pizza-image {
+  transform: rotate(15deg);
 }
 
 .pizza-card img {
   width: 100%;
-  margin-top: 15px; /* Pastikan gambar memenuhi lebar kartu */
-  height: 80px; /* Atur tinggi gambar agar sesuai dengan kartu */
-  object-fit: contain; /* Mengisi area gambar tanpa merusak rasio aspek */
-  border-radius: 8px; /* Tambahkan border-radius pada gambar */
+  margin-top: 15px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 8px;
 }
 
 .pizza-info {
   display: flex;
   margin-right: 50px;
-  flex-direction: column; /* Mengatur info pizza dalam kolom */
-  justify-content: center; /* Pusatkan konten secara vertikal */
+  flex-direction: column;
+  justify-content: center;
 }
 
 .pizza-info h2 {
-  margin: 0; /* Menghapus margin untuk judul pizza */
+  margin: 0;
 }
 
 .pizza-info p {
-  margin: 5px 0 0; /* Atur margin untuk paragraf */
+  margin: 5px 0 0;
 }
 
 .offer {
@@ -347,32 +350,32 @@ export default {
 
 .toppings-selection {
   display: flex;
-  flex-wrap: wrap; /* Allow wrapping to the next line */
-  gap: 10px; /* Space between toppings */
+  flex-wrap: wrap;
+  gap: 10px;
 }
 
 .topping-checkbox {
   display: flex;
-  align-items: center; /* Center items vertically */
+  align-items: center;
   background-color: #f8f8f8;
-  border-radius: 20px; /* Rounded borders */
+  border-radius: 20px;
   padding: 10px;
   cursor: pointer;
   transition: background-color 0.3s;
-  width: calc(16.66% - 10px); /* Six items per row with gap */
+  width: calc(16.66% - 10px);
 }
 
 .topping-checkbox.selected {
-  background-color: orange; /* Change background color to orange when selected */
-  color: white; /* Change text color to white for better contrast */
+  background-color: orange;
+  color: white;
 }
 
 .topping-checkbox:hover {
-  background-color: #e0e0e0; /* Change background on hover for better UX */
+  background-color: #e0e0e0;
 }
 
 .topping-checkbox input {
-  margin-right: 10px; /* Space between checkbox and text */
+  margin-right: 10px;
 }
 
 .modal-overlay {
@@ -381,18 +384,18 @@ export default {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5); /* Latar belakang transparan */
+  background-color: rgba(0, 0, 0, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000; /* Pastikan modal di atas konten lainnya */
+  z-index: 1000;
 }
 
 .modal-content {
   background-color: white;
   border-radius: 8px;
   padding: 20px;
-  width: 300px; /* Atur lebar modal sesuai kebutuhan */
+  width: 300px;
   text-align: center;
 }
 
@@ -401,12 +404,12 @@ export default {
 }
 
 .modal-body {
-  margin: 20px 0; /* Jarak antara header dan body */
+  margin: 20px 0;
 }
 
 .modal-cart-gif {
-  width: 200px; /* Atur lebar gambar sesuai kebutuhan */
-  height: 150px; /* Menjaga rasio aspek */
+  width: 200px;
+  height: 150px;
 }
 
 .modal-footer {
@@ -427,13 +430,13 @@ export default {
 
 @media (max-width: 768px) {
   .pizza-card {
-    width: 100%; /* Mengatur lebar kartu menjadi 100% agar dapat diisi secara horizontal */
+    width: 100%;
     margin-bottom: 20px;
   }
 
   .discount-logo {
-    width: 30px; /* Atur lebar logo sesuai kebutuhan */
-    margin-left: 50px;
+    width: 30px;
+    margin-left: 65px;
   }
 
   .payment-summary {
@@ -457,7 +460,7 @@ export default {
   }
 
   .topping-checkbox {
-    width: calc(33.33% - 10px); /* Three items per row with gap */
+    width: calc(33.33% - 10px);
   }
 }
 </style>

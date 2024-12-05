@@ -50,18 +50,36 @@ export default {
   name: "Header",
   data() {
     return {
-      isMenuActive: false, // Untuk mengontrol status menu
+      isMenuActive: false,
     };
   },
   methods: {
     toggleMenu() {
-      this.isMenuActive = !this.isMenuActive; // Toggle status menu
+      this.isMenuActive = !this.isMenuActive;
     },
   },
 };
 </script>
 
 <style scoped>
+@keyframes slideIn {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.header-title {
+  font-size: 80px;
+  color: orange;
+  text-align: center;
+  animation: slideIn 1s ease forwards;
+}
+
 .header {
   background-image: url("@/assets/img/hero.png");
   background-size: cover;
@@ -71,6 +89,7 @@ export default {
   flex-direction: column;
   justify-content: center;
   padding-top: 20px;
+  animation: fadeIn 1s ease forwards;
 }
 
 .header-content {
